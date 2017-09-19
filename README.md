@@ -1,4 +1,4 @@
-# IV-1718
+# IV-1718-Proyectos
 
 ## Repositorio para el proyecto de la asignatura Infraestructura Virtual
 
