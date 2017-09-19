@@ -1,6 +1,6 @@
 # IV-1718
 
-## Repositorio de la asignatura Infraestructura Virtual curso 17-18
+## Repositorio para el proyecto de la asignatura Infraestructura Virtual curso 17-18
 
 ## Hito 0:
 Para el proyecto que se nos pide vamos a realizar un Bot de Telegram enfocado a eventos deportivos mediante el cual a través de una serie de comandos podamos interactuar con el y recibir la información que deseemos. El Bot estará centrado principalmente en fútbol, baloncesto y béisbol.
