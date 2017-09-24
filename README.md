@@ -13,7 +13,13 @@
 2. pip3 install beautifulsoup4
 ~~~
 
-Las librerías requests y re vienen por defecto con Python por lo que no es necesario hacer nada.
+Las librerías 
+~~~
+requests
+~~~ y 
+~~~
+re 
+~~~ vienen por defecto con Python por lo que no es necesario hacer nada.
 
 
 
