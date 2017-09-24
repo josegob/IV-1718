@@ -1,12 +1,18 @@
 # Proyecto Infraestructura Virtual
 
-## Pequeño avance del hito 1:
+[Descripción del proyecto](https://josegob.github.io/IV-1718-Proyecto/)
+[Documentacion pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI#pytelegrambotapi)
 
-Para el proyecto que se nos pide vamos a realizar un Bot de Telegram enfocado a conocer valoraciones, comentarios e información adicional de series de televisión, películas y videojeguos
+## Requisitos
+* pyTelegramBotAPI 
+* Libreria requests, BeautifulSoup y re
 
-Alguna de la información que se podrá obtener del Bot será:
-- Resultados de eventos deportivos de un equipo 
-- Próximos partidos de un equipo
-- Clasificación de un equipo
+~~~
+1. pip3 install pyTelegramBotAPI
+2. pip3 install beautifulsoup4
+~~~
 
-El Bot podrá ser modificado en el futuro con el objetivo de añadir algunas características adicionales.
+Las librerías requests y re vienen por defecto con Python por lo que no es necesario hacer nada.
+
+
+
