@@ -1,4 +1,4 @@
 test:
-	python3 test.py
+	./bot_metacritic/python3 test.py
 
 
