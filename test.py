@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import bot_metacritic.funciones_bot
+import bot_metacritic.funciones_bot as funciones_bot
 import unittest
 
 
