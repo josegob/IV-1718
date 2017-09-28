@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/josegob/IV-Proyecto.svg?branch=master)](https://travis-ci.org/josegob/IV-Proyecto)
 
 # Proyecto Infraestructura Virtual
 
