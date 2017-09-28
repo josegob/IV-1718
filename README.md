@@ -7,7 +7,7 @@ Asimismo el bot contará con una base de datos para mostrar el top 20 de las pel
 Para realizar este proyecto haremos uso de las siguientes herramientas:
 
 - Lenguaje de programación Python, que será la 	base de nuestro proyecto
-- pyTelegramBotAPI será la API que utilizaremos para desarrollar nuestro 
+- pyTelegramBotAPI será la API que utilizaremos para desarrollar nuestro Bot
 - Libreria requests para obtener la informacion del sitio 
 - La libreria BeautifulSoup para analizar el documento HTML obtenido con la libreria requests
 - La libreria re para tratar las expresiones regulares que podamos encontrar en el documento HTML
