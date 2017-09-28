@@ -1,9 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import sys
-sys.path.insert(0, '/bot_metacritic')
-import funciones_bot
+import bot_metacritic.funciones_bot
 import unittest
 
 
