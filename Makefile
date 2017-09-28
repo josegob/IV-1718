@@ -1,4 +1,4 @@
 test:
-	./bot_metacritic/python3 test.py
+	cd ./bot_metacritic/ && python3 test.py
 
 
