@@ -2,7 +2,7 @@
 
 # Proyecto Infraestructura Virtual
 
-[Descripción del proyecto](https://josegob.github.io/IV-Proyecto/)
+[Documentación del proyecto](https://josegob.github.io/IV-Proyecto/)
 
 [Documentacion pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI#pytelegrambotapi)
 
