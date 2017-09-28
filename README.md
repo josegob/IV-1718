@@ -1,4 +1,4 @@
-![Status Travis](https://travis-ci.org/josegob/IV-Proyecto.svg?branch=master)
+[![Status Travis](https://travis-ci.org/antoniovj1/infraestructura_virtual_ugr.svg?branch=master)](https://travis-ci.org/josegob/IV-Proyecto)
 
 # Proyecto Infraestructura Virtual
 
