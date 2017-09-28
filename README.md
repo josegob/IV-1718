@@ -1,3 +1,5 @@
+[Status Travis](https://travis-ci.org/josegob/IV-Proyecto.svg?branch=master)
+
 # Proyecto Infraestructura Virtual
 
 [Descripción del proyecto](https://josegob.github.io/IV-Proyecto/)
