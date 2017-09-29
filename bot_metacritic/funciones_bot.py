@@ -69,7 +69,7 @@ def buscadorJuegos(busqueda):
         lista_final.append(dev)
 
         lista_final.append(url_juego)
-        print(len(lista_final))
+ 
         return lista_final
 
 
