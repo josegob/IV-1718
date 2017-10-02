@@ -19,7 +19,7 @@ def buscadorJuegos(busqueda):
     url_juego = url_base + juego
     url_final = requests.get(url_juego, headers=headers)
 
-    if (url_final.status_code == 404):
+    if (url_final.status_code == 404 or juego == ''):
         #print("El juego buscado no se encuentra en la base de datos de Metacritic")
         #lista_final.append("El juego introducido no se encuentra en la base de datos de Metacritic")
         return -1
@@ -85,7 +85,7 @@ def buscadorSeries(busqueda):
     url_serie = url_base + serie
     url_final = requests.get(url_serie, headers=headers)
 
-    if (url_final.status_code == 404):
+    if (url_final.status_code == 404 or serie == ''):
         #lista_series.append("La serie introducida no se encuentra en la base de datos de Metacritic")
         return -1
 
@@ -147,7 +147,7 @@ def buscadorPeliculas(busqueda):
     url_final = requests.get(url_pelicula, headers=headers)
 
 
-    if (url_final.status_code == 404):
+    if (url_final.status_code == 404 or pelicula == ''):
         #lista_peliculas.append("La serie introducida no se encuentra en la base de datos de Metacritic")
         return -1
 
