@@ -6,7 +6,7 @@ import time # Librería para hacer que el programa que controla el bot no se aca
 from funciones_bot import *
 import re
 
-bot = telebot.TeleBot(os.environ["token_bot"]) # Creamos el objeto de nuestro bot.
+bot = telebot.TeleBot("469787221:AAHsblMRY_7xBfyrPrF2HAvIlUXGMbHn5Xs") # Creamos el objeto de nuestro bot.
 
 def listener(messages):
     for m in messages:
