@@ -1,12 +1,23 @@
 import psycopg2
 import top20
+import os
+from urllib import parse
 
 lista_peliculas = []
 lista_series = []
+parse.uses_netloc.append("postgres")
+url = parse.urlparse(os.environ["DATABASE_URL"])
 
 def devuelveTop20():
     # Connect to an existing database
-    conn = psycopg2.connect("dbname=top20db user=top20bot password=root")
+    conn = psycopg2.connect(
+        database=url.path[1:],
+        user=url.username,
+        password=url.password,
+        host=url.hostname,
+        port=url.port
+    )
+
 
     # Open a cursor to perform database operations
     cur = conn.cursor()
