@@ -1,1 +1,1 @@
-worker: python bot_metacritic/bot_metacritic.py
+worker: python3 bot_metacritic/bot_metacritic.py
