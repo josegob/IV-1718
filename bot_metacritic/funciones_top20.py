@@ -1,4 +1,3 @@
-from lxml import html
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -121,3 +120,5 @@ def top20Series():
                 release_date_series.append(tmp)
 
         return nombre_series, puntuacion_series, info_series, release_date_series
+
+print(len(top20Series()))
