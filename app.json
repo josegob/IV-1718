@@ -1,0 +1,9 @@
+{
+  "name": "Infraestructura virtual UGR",
+  "description": "Bot de Telegram para IV",
+  "website": "https://josegob.github.io/IV-Proyecto/",
+  "repository": "https://github.com/josegob/IV-Proyecto",
+  "logo": "https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/github-logo.jpg",
+  "keywords": ["python", "postgres"],
+  "addons": ["heroku-postgresql"]
+}
