@@ -53,7 +53,7 @@ Por último debemos activar la opción de despliegue automático en Heroku una v
 
 En esta imagen podemos ver como la base de datos se ha creado correctamente y le hemos metido alguna información.
 
-![base de datos](https://github.com/josegob/IV-Proyecto/blob/gh-pages/Imagenes/db_heroku.png)
+![base de datos]({{https://github.com/josegob/IV-Proyecto}}/assets/db_heroku.png)
 
 Variables de entorno añadidas a nuestra aplicación.
 
