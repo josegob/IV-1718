@@ -61,7 +61,7 @@ Variables de entorno añadidas a nuestra aplicación.
 
 Podemos comprobar que nuestra app esta enlazada correctamente con nuestro repositorio
 
-![enlace GitHub](https://github.com/josegob/IV-Proyecto/blob/gh-pages/Imagenes/App_enlazada.png)
+![enlace GitHub](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/Imagenes/App_enlazada.png)
 
 Y el despliegue automático está activado
 
