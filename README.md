@@ -7,16 +7,16 @@
 
 [Documentación pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI#pytelegrambotapi)
 
+[Documentación psycopg2](http://initd.org/psycopg/docs/)
+
 ## Requisitos
-* pyTelegramBotAPI 
-* Libreria requests, BeautifulSoup y re
+* pyTelegramBotAPI
+* Libreria requests, BeautifulSoup, re y psycopg2 para la base de datos
 
 ~~~
 1. pip3 install pyTelegramBotAPI
 2. pip3 install beautifulsoup4
+3. pip3 install psycopg2
 ~~~
 
 Las librerías **requests** y **re** vienen por defecto con Python por lo que no es necesario hacer nada.
-
-
-
