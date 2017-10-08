@@ -4,6 +4,6 @@
   "website": "https://josegob.github.io/IV-Proyecto/",
   "repository": "https://github.com/josegob/IV-Proyecto",
   "logo": "https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/github-logo.jpg",
-  "keywords": ["python", "postgres", "bot", "telegram"],
+  "keywords": ["python", "postgres", "bot", "telegram", "metacritic"],
   "addons": ["heroku-postgresql"]
 }
