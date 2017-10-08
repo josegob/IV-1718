@@ -1,9 +1,9 @@
 {
   "name": "Metacritic Bot para Telegram",
-  "description": "Bot de Telegram para IV",
+  "description": "Proyecto IV",
   "website": "https://josegob.github.io/IV-Proyecto/",
   "repository": "https://github.com/josegob/IV-Proyecto",
   "logo": "https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/github-logo.jpg",
-  "keywords": ["python", "postgres"],
+  "keywords": ["python", "postgres", "bot", "telegram"],
   "addons": ["heroku-postgresql"]
 }
