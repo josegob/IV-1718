@@ -34,7 +34,10 @@ Otra ventaja es la de que este conjunto de pruebas se realiza en un entorno limp
 
 ## Despliegue en Heroku
 
-Para el despliegue de nuestra aplicación en Heroku necesitaremos hacer uso de varios ficheros. El primero sera el archivo **Procfile** que debe situarse en el directorio raíz del proyecto. Dicho fichero contendrá el comando necesario para ejecutar el bot una vez haya pasado el test de Integración Continua. El contenido del fichero sería el siguiente:
+El PaaS elegido para el despliegue ha sido Heroku. Esta elección se ha debido a la facilidad de uso así como la posibilidad de integrar una base de datos basada en Postgres. Además de lo anterior Heroku nos permite alojar nuestra aplicación de forma gratuita aunque eso si, con algunas limitaciones.
+Asimismo la gran documentación que posee Heroku y su interfaz han hecho que junto con lo mencionado anteriormente me decante por este servicio.
+
+Para el despliegue de nuestra aplicación en Heroku necesitaremos hacer uso de varios ficheros. El primero sera el archivo **Procfile** que debe situarse en el directorio raíz del proyecto. Dicho fichero contendrá el comando necesario para ejecutar el bot una vez haya pasado el test de Integración Continua. El contenido del fichero será el siguiente:
 
 ~~~
 worker: python3 bot_metacritic/bot_metacritic.py
@@ -46,7 +49,7 @@ El segundo fichero será el **runtime.txt** que contendrá la versión de python
 python-3.5.2
 ~~~
 
-Posteriormente necesitaremos crear la aplicación en Heroku y para ello ejecutaremos desde la terminal el comando `heroku create -a 'nombre de la app¡'` y el comando `heroku addons:create heroku-postgresql:hobby-basic -a 'nombre de la app'` para crear una base de datos para la app. A continuación entramos en nuestro dashboard de Heroku y enlazamos la aplicacion con nuestro repositorio de GitHub donde se encuentra el bot.
+Posteriormente necesitaremos crear la aplicación en Heroku y para ello ejecutaremos desde la terminal el comando `heroku create --region eu -a 'nombre de la app'` y el comando `heroku addons:create heroku-postgresql:hobby-basic -a 'nombre de la app'` para crear una base de datos para la app. A continuación entramos en nuestro dashboard de Heroku y enlazamos la aplicacion con nuestro repositorio de GitHub donde se encuentra el bot.
 Asimismo configuramos las variables de entorno `DATABASE_URL` y `token_bot` desde la pestaña de ajustes.
 
 Por último debemos activar la opción de despliegue automático en Heroku una vez que haya pasado los tests de Integración Continua. Dicha tarea se realiza desde la pestaña `Deploy`
@@ -70,4 +73,8 @@ Y el despliegue automático está activado
 Por último cuando nuestra aplicación pase los tests unitarios se desplegara automáticamente
 ![dashboard heroku](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/dashboard_heroku.png)
 
-Una vez desplegado el bot podremos probarlo desde Telegram buscando el bot por el nombre @MetaClippy_bot y ver los logs mediante el comando `heroku logs --tails -a 'nombre de la app'` desde nuestra terminal
+Una vez desplegado el bot podremos probarlo desde Telegram buscando el bot por el nombre @MetaClippy_bot y ver los logs mediante el comando `heroku logs --tails -a 'nombre de la app'` desde nuestra terminal.
+
+El enlace al despliegue de nuestra aplicación es el [siguiente](https://bot-metacritic.herokuapp.com/ "siguiente")
+
+Sin embargo  al tratarse de una aplicación que se aloja en Telegram y no muestra nada por pantalla nos dará un error al intentar acceder a ella.
