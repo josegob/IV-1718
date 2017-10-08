@@ -53,21 +53,21 @@ Por último debemos activar la opción de despliegue automático en Heroku una v
 
 En esta imagen podemos ver como la base de datos se ha creado correctamente y le hemos metido alguna información.
 
-![base de datos](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/Imagenes/db_heroku.png)
+![base de datos](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/db_heroku.png)
 
 Variables de entorno añadidas a nuestra aplicación.
 
-![variables entorno](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/Imagenes/Vars_entorno.png)
+![variables entorno](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/Vars_entorno.png)
 
 Podemos comprobar que nuestra app esta enlazada correctamente con nuestro repositorio
 
-![enlace GitHub](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/Imagenes/App_enlazada.png)
+![enlace GitHub](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/App_enlazada.png)
 
 Y el despliegue automático está activado
 
-![despliegue auto](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/Imagenes/Despliegue_auto.png)
+![despliegue auto](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/Despliegue_auto.png)
 
 Por último cuando nuestra aplicación pase los tests unitarios se desplegara automáticamente
-![dashboard heroku](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/Imagenes/dashboard_heroku.png)
+![dashboard heroku](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/dashboard_heroku.png)
 
 Una vez desplegado el bot podremos probarlo desde Telegram buscando el bot por el nombre @MetaClippy_bot y ver los logs mediante el comando `heroku logs --tails -a 'nombre de la app'` desde nuestra terminal
