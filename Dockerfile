@@ -1,21 +1,14 @@
 FROM ubuntu:16.04
 
-MAINTAINER Jose Gomez Baena
+MAINTAINER Jose Gomez Baena <jose.gob@gmail.com>
 
 # Variables de entorno para la conexion a la BD
 ARG DATABASE_URL
-ARG HOST_BD
-ARG NAME_BD
-ARG PW_BD
-ARG TOKENBOT
-ARG USER_BD
+ARG token_bot
 
 ENV DATABASE_URL=$DATABASE_URL
-ENV HOST_BD=$HOST_BD
-ENV NAME_BD=$NAME_BD
-ENV PW_BD=$PW_BD
-ENV TOKENBOT=$TOKENBOT
-ENV USER_BD=$USER_BD
+ENV token_bot=$token_bot
+
 
 RUN apt-get update
 RUN apt-get install -y python3-pip
