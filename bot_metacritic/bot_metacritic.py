@@ -101,11 +101,10 @@ def command_buscarpelicula(m):
 
 @bot.message_handler(commands=['top20series'])
 def command_top20series(m):
+    bot.send_message(cid, 'Un momento, te paso el top20 de las series del momento')
     resultado_top20series = []
     cid = m.chat.id
     resultado_top20series = top20Series()
-    bot.send_message(cid, 'Un momento, te paso el top20 de las series del momento')
-    time.sleep(3)
     for i in range(0,20):
         bot.send_message(cid, '''Numero #{}
                                 \nNombre de la serie: {}
@@ -119,11 +118,10 @@ def command_top20series(m):
 
 @bot.message_handler(commands=['top20peliculas'])
 def command_top20peliculas(m):
+    bot.send_message(cid, 'Un momento, te paso el top20 de las peliculas del momento')
     resultado_top20peliculas = []
     cid = m.chat.id
     resultado_top20peliculas = top20Peliculas()
-    bot.send_message(cid, 'Un momento, te paso el top20 de las peliculas del momento')
-    time.sleep(3)
     for i in range(0,20):
         bot.send_message(cid, '''Numero #{}
                                 \nNombre de la pelicula: {}
