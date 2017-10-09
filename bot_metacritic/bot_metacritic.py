@@ -6,7 +6,7 @@ import time # Librería para hacer que el programa que controla el bot no se aca
 from funciones_bot import *
 import re
 import os
-from funciones_top20 import *
+from funciones_db import *
 
 
 bot = telebot.TeleBot(os.environ["token_bot"]) # Creamos el objeto de nuestro bot.
@@ -103,15 +103,15 @@ def command_top20series(m):
     cid = m.chat.id
     bot.send_message(cid, 'Un momento, te paso el top20 de las series del momento')
     resultado_top20series = []
-    resultado_top20series = top20Series()
+    resultado_top20series = devuelveTop20()
     for i in range(0,20):
         bot.send_message(cid, '''Numero #{}
                                 \nNombre de la serie: {}
                                 \nPuntuacion de la serie: {}
                                 \nEnlace de la serie: {}
                                 \nFecha de lanamiento: {}'''
-                                .format(i,resultado_top20series[0][i],resultado_top20series[1][i],
-                                resultado_top20series[2][i], resultado_top20series[3][i]))
+                                .format(i,resultado_top20series[1][i][0],resultado_top20series[1][i][1],
+                                resultado_top20series[1][i][2], resultado_top20series[1][i][3]))
 
     del resultado_top20series
 
@@ -120,15 +120,15 @@ def command_top20peliculas(m):
     cid = m.chat.id
     bot.send_message(cid, 'Un momento, te paso el top20 de las peliculas del momento')
     resultado_top20peliculas = []
-    resultado_top20peliculas = top20Peliculas()
+    resultado_top20peliculas = devuelveTop20()
     for i in range(0,20):
         bot.send_message(cid, '''Numero #{}
                                 \nNombre de la pelicula: {}
                                 \nPuntuacion de la pelicula: {}
                                 \nEnlace de la pelicula: {}
                                 \nFecha de lanamiento: {}'''
-                                .format(i,resultado_top20peliculas[0][i],resultado_top20peliculas[1][i],
-                                resultado_top20peliculas[2][i], resultado_top20peliculas[3][i]))
+                                .format(i,resultado_top20peliculas[0][i][0],resultado_top20peliculas[0][i][1],
+                                resultado_top20peliculas[0][i][2], resultado_top20peliculas[0][i][3]))
 
     del resultado_top20peliculas
 
