@@ -23,4 +23,4 @@ RUN apt-get install -y git
 RUN git clone https://github.com/josegob/IV-Proyecto.git
 RUN cd IV-Proyecto/ && pip3 install -r requirements.txt
 
-RUN cd IV-Proyecto/bot-metacritic/ && python3 bot_metacritic.py
+
