@@ -19,8 +19,8 @@ ENV USER_BD=$USER_BD
 
 RUN apt-get update
 RUN apt-get install -y python3-pip
-RUN pip3 install -r requirements.txt
 RUN apt-get install -y git
 RUN git clone https://github.com/josegob/IV-Proyecto.git
+RUN pip3 install -r requirements.txt
 
 RUN cd IV-Proyecto/bot-metacritic/ && python3 bot_metacritic.py
