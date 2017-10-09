@@ -1,7 +1,9 @@
 import psycopg2
-import funciones_top20
 import os
 from urllib import parse
+import gestor_info_bd
+
+gestor_info_bd.aniadirTop20()
 
 lista_peliculas = []
 lista_series = []
