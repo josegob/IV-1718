@@ -1,5 +1,5 @@
 import psycopg2
-import top20
+import funciones_top20
 import os
 from urllib import parse
 
