@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Jose Gomez Baena <jose.gob@gmail.com>
+MAINTAINER Jose Gomez Baena
 
 # Variables de entorno para la conexion a la BD
 ARG DATABASE_URL
