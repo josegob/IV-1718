@@ -6,7 +6,7 @@ import time # Librería para hacer que el programa que controla el bot no se aca
 from funciones_bot import *
 import re
 import os
-from funciones_db import *
+from funciones_bd import *
 
 
 bot = telebot.TeleBot(os.environ["token_bot"]) # Creamos el objeto de nuestro bot.
