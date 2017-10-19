@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/")
 def welcome():
     return ("API BOT")
-    
+
 @app.route("/buscarjuego/<juego>")
 def buscarjuego(juego):
     return json.dumps(buscadorJuegos(juego))
@@ -31,4 +31,4 @@ def top20series():
     return json.dumps(top20Series())
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run()
