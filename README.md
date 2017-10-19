@@ -75,9 +75,14 @@ Por último cuando nuestra aplicación pase los tests unitarios se desplegara au
 
 Una vez desplegado el bot podremos probarlo desde Telegram buscando el bot por el nombre @MetaClippy_bot y ver los logs mediante el comando `heroku logs --tails -a 'nombre de la app'` desde nuestra terminal.
 
-El enlace al despliegue de nuestra aplicación es el [siguiente](https://bot-metacritic.herokuapp.com/ "siguiente")
+También podemos hacer uso de la API mediante el siguiente [enlace](https://bot-metacritic-api.herokuapp.com/)
 
-Sin embargo  al tratarse de una aplicación que se aloja en Telegram y no muestra nada por pantalla nos dará un error al intentar acceder a ella.
+Las direcciones disponibles que tenemos en la API son:
+* /buscarjuego/"nombre del juego"
+* /buscarpelicula/"nombre de la pelicula"
+* /buscarserie/"nombre de la serie"
+* /top20series/
+* /top20peliculas/
 
 ## Despliegue del proyecto en Docker
 
