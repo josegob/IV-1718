@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER Jose Gomez Baena
 
-# Variables de entorno para la conexion a la BD
+# Variables de entorno para la conexion a la BD y para el Bot
 ARG DATABASE_URL
 ARG token_bot
 
@@ -15,5 +15,3 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y git
 RUN git clone https://github.com/josegob/IV-Proyecto.git
 RUN cd IV-Proyecto/ && pip3 install -r requirements.txt
-
-
