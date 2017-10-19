@@ -6,6 +6,10 @@ from funciones_top20 import *
 
 app = Flask(__name__)
 
+@app.route("/")
+def welcome():
+    return ("API BOT")
+    
 @app.route("/buscarjuego/<juego>")
 def buscarjuego(juego):
     return json.dumps(buscadorJuegos(juego))
