@@ -78,3 +78,52 @@ Una vez desplegado el bot podremos probarlo desde Telegram buscando el bot por e
 El enlace al despliegue de nuestra aplicación es el [siguiente](https://bot-metacritic.herokuapp.com/ "siguiente")
 
 Sin embargo  al tratarse de una aplicación que se aloja en Telegram y no muestra nada por pantalla nos dará un error al intentar acceder a ella.
+
+## Despliegue del proyecto en Docker
+
+
+Para el despliegue de nuestra app en Docker:
+
+Crearemos un repositorio en Docker y lo enlazaremos con nuestro GitHub como se puede ver en la siguiente imagen:
+
+![Imagen Repo Docker](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/Docker_img.png)
+
+Una vez hecho esto comprobamos que está correctamente enlazado con nuestro repositorio y con la rama en la que tenemos nuestro proyecto.
+
+![Repo enlazado Docker](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/Docker_img_2.png))
+
+Por otro lado necesitaremos hacer uso de un archivo Dockerfile que incluiremos en nuestro repositorio. El contenido de dicho archivo será el siguiente:
+```
+FROM ubuntu:16.04
+
+MAINTAINER Jose Gomez Baena
+
+# Variables de entorno para la conexion a la BD
+ARG DATABASE_URL
+ARG token_bot
+
+ENV DATABASE_URL=$DATABASE_URL
+ENV token_bot=$token_bot
+
+
+RUN apt-get update
+RUN apt-get install -y python3-pip
+RUN apt-get install -y git
+RUN git clone https://github.com/josegob/IV-Proyecto.git
+RUN cd IV-Proyecto/ && pip3 install -r requirements.txt
+```
+
+Si todo está correctamente configurado, una vez subamos el fichero Dockerfile a nuestro repositorio, Docker empezará a construir un contenedor con los comandos que le hemos especificado.
+Una vez terminé si no ha habido ningún error veremos la siguiente imagen en nuesto repositorio de Docker:
+
+![Docker build](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/Docker_img_3.png))
+
+
+Una vez tengamos el contenedor listo abrimos la consola y ejecutamos el siguiente comando:
+
+```
+sudo docker run -e "DATABASE_URL=MI_URL" -e "token_bot=MI_TOKEN" -i -t josegob/bot-metacritic
+```
+Una vez descargue nuestro contenedor, nos dará acceso a él y podremos ejecutar nuestra aplicación desde Docker
+
+El repositorio de Docker es accesible desde en el siguiente [enlace](https://hub.docker.com/r/josegob/bot-metacritic/)
