@@ -31,4 +31,4 @@ def top20series():
     return json.dumps(top20Series())
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, use_reloader=True)
