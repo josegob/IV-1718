@@ -79,11 +79,11 @@ También podemos hacer uso de la API de nuesto bot mediante el siguiente el sigu
  [https://bot-metacritic-api.herokuapp.com/](https://bot-metacritic-api.herokuapp.com/)
 
 Las direcciones disponibles que tenemos en la API son:
-* /buscarjuego/"nombre del juego"
-* /buscarpelicula/"nombre de la pelicula"
-* /buscarserie/"nombre de la serie"
-* /top20series/
-* /top20peliculas/
+* /juego/"nombre del juego"
+* /pelicula/"nombre de la pelicula"
+* /serie/"nombre de la serie"
+* /top20/series
+* /top20/peliculas
 
 ## Despliegue del proyecto en Docker
 
