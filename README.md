@@ -205,3 +205,40 @@ Para automatizar el proceso de despliegue vamos a hacer uso de Fabric. Este fich
 El contenido de este fichero es el siguiente:
 
 ~~~
+from fabric.api import *
+
+
+def instalar_bot():
+	run('sudo git clone https://github.com/josegob/IV-Proyecto')
+	run('cd ./IV-Proyecto && sudo pip3 install -r requirements.txt')
+
+def bot_up():
+    with shell_env(token_bot='token_bot', DATABASE_URL='DATABASE_URL'):
+        run('nohup sudo -E python3 ./IV-Proyecto/bot_metacritic/bot_metacritic.py', pty=False)
+
+def delete_bot():
+	run('sudo rm -rf ./IV-Proyecto')
+
+def kill_bot():
+    run('sudo pkill python3')
+~~~
+
+Para ejecutar estas funciones haremos uso de los siguientes comandos:
+
+```fab -i KEY.pem -H ubuntu@DNS funcion_disponible```
+
+Donde KEY.pem es el archivo comentado anteriormente y funcion_disponible es una de las funciones que hay en el archivo Fabric.
+
+## Script automatización
+
+Por últimos hemos creado un pequeño script que nos permite automatizar tanto el proceso de creacion y aprovisionamiento de nuestro IaaS en AWS como de la instalación y despliegue de nuestro Bot en Telegram.
+
+~~~
+vagrant up --provider=aws
+
+fab -i KEY.pem -H ubuntu@DNS instalar_bot
+fab -i KEY.pem -H ubuntu@DNS bot_up
+
+#Cambiar KEY.pem por el archivo correspondiente de AWS
+#Cambiar DNS por el correspondiente de la instancia creada con Vagrant
+~~~
