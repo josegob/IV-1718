@@ -104,7 +104,7 @@ RUN cd IV-Proyecto/ && pip3 install -r requirements.txt
 Si todo está correctamente configurado, una vez subamos el fichero Dockerfile a nuestro repositorio, Docker empezará a construir un contenedor con los comandos que le hemos especificado.
 Una vez terminé si no ha habido ningún error veremos la siguiente imagen en nuesto repositorio de Docker:
 
-![Docker build](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/Docker_img_3.png))
+![Docker build](https://raw.githubusercontent.com/josegob/IV-Proyecto/gh-pages/assets/Docker_img_3.png)
 
 
 Una vez tengamos el contenedor listo abrimos la consola y ejecutamos el siguiente comando:
@@ -115,3 +115,43 @@ sudo docker run -e "DATABASE_URL=MI_URL" -e "token_bot=MI_TOKEN" -i -t josegob/b
 Una vez descargue nuestro contenedor, nos dará acceso a él y podremos ejecutar nuestra aplicación desde Docker
 
 El repositorio de Docker es accesible desde en el siguiente [enlace](https://hub.docker.com/r/josegob/bot-metacritic/)
+
+## Despliegue en AWS con Vagrant y Fabric
+
+Para el despliegue en AWS vamos a crear un archivo Vagrant con el siguiente contenido:
+
+~~~
+Vagrant.configure("2") do |config|
+  config.vm.box = "dummy"
+
+  config.vm.define "bot-metacritic-aws" do |host|
+    host.vm.hostname = "bot-metacritic-aws"
+  end
+  config.vm.provider :aws do |aws, override|
+    aws.access_key_id = "ASIAIVQI72X44HDWIJDA"
+    aws.secret_access_key = "JehB7FTXN0UFU1yY+zktaDrjC1AXFB1hj9S1BTqm"
+    aws.session_token = "FQoDYXdzEEMaDE6ZdaW3nA7G3QfUMyKUAa1Uhrqg9+epDFLJDtKJSAWZuwMXTlnzLXoUQlUqY7cyvP9rVbqNd4BqYV7PeH9rxhknZoO8R2/CrSSNnFb0+QbzyR8ygN5q2iiAoyIkMXLQtUBYRQ2cJJgOhWD0C2gn2krrYfr6jqt6uOVtP2JICuM1MqcvA9UA/axAAKBoTuDDpMdKYUax6Tm/iL6k9e62bJg4/m8on77BzwU="
+    aws.keypair_name = "FINAL_KEY"
+    aws.region= "us-west-2"
+    aws.security_groups = [ 'botgrupo2' ]
+    aws.instance_type= 't2.micro'
+
+    aws.ami = "ami-19e92861"
+
+    override.ssh.username = "ubuntu"
+    override.ssh.private_key_path = "FINAL_KEY.pem"
+  end
+
+    config.vm.provision :ansible do |ansible|
+    	ansible.playbook = "ansible_metacritic.yml"
+    	ansible.force_remote_user= true
+    	ansible.host_key_checking=false
+  end
+
+
+end
+~~~
+
+Como vemos al final del archivo Vagrant incluimos un archivo Ansible que se va a encargar de aprovisionar nuestro IaaS. El contenido de dicho archivo será:
+
+~~~
