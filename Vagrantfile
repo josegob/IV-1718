@@ -5,9 +5,9 @@ Vagrant.configure("2") do |config|
     host.vm.hostname = "bot-metacritic-aws"
   end
   config.vm.provider :aws do |aws, override|
-    aws.access_key_id = "ASIAIWJETZEM4GOBDK7A"
-    aws.secret_access_key = "bu4ccod7eeQaHABs64ZqNPTWZC9AZ7K8eLgm6Qc1"
-    aws.session_token = "FQoDYXdzEEsaDMBWtry54BjioOAipyKUAavl6ARVbmENIIUnOIny7g2Oj57m9dhBt85uuVRH7YAmlDdTD5r/wWjUu0/rRsSgaQV1KtsLzM6dPQpPpR9n8S8I0ARluhzA0WhMmi6jZk05JVlxVTIvIulgBGm9o5r4rU82BorImeEDA4k+CFhWK6GjsIG8tpdaodL0WRJy7wQDw+K0UaWMMDXoRIUpAw87RUmY2RUoz6PDzwU="
+    aws.access_key_id = "access_key_id"
+    aws.secret_access_key = "secret_access_key"
+    aws.session_token = "session_token"
     aws.keypair_name = "FINAL_KEY"
     aws.region= "us-west-2"
     aws.security_groups = [ 'botgrupo2' ]
