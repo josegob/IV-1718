@@ -116,7 +116,7 @@ Una vez descargue nuestro contenedor, nos dará acceso a él y podremos ejecutar
 
 El repositorio de Docker es accesible desde en el siguiente [enlace](https://hub.docker.com/r/josegob/bot-metacritic/)
 
-## Despliegue en AWS con Vagrant y Fabric
+## Despliegue en AWS con Vagrant
 
 Para el despliegue en AWS vamos a crear un archivo Vagrant con el siguiente contenido:
 
@@ -128,9 +128,9 @@ Vagrant.configure("2") do |config|
     host.vm.hostname = "bot-metacritic-aws"
   end
   config.vm.provider :aws do |aws, override|
-    aws.access_key_id = "ASIAIVQI72X44HDWIJDA"
-    aws.secret_access_key = "JehB7FTXN0UFU1yY+zktaDrjC1AXFB1hj9S1BTqm"
-    aws.session_token = "FQoDYXdzEEMaDE6ZdaW3nA7G3QfUMyKUAa1Uhrqg9+epDFLJDtKJSAWZuwMXTlnzLXoUQlUqY7cyvP9rVbqNd4BqYV7PeH9rxhknZoO8R2/CrSSNnFb0+QbzyR8ygN5q2iiAoyIkMXLQtUBYRQ2cJJgOhWD0C2gn2krrYfr6jqt6uOVtP2JICuM1MqcvA9UA/axAAKBoTuDDpMdKYUax6Tm/iL6k9e62bJg4/m8on77BzwU="
+    aws.access_key_id = "access_key_id"
+    aws.secret_access_key = "secret_access_key"
+    aws.session_token = "session_token"
     aws.keypair_name = "FINAL_KEY"
     aws.region= "us-west-2"
     aws.security_groups = [ 'botgrupo2' ]
@@ -153,5 +153,55 @@ end
 ~~~
 
 Como vemos al final del archivo Vagrant incluimos un archivo Ansible que se va a encargar de aprovisionar nuestro IaaS. El contenido de dicho archivo será:
+
+~~~
+---
+- hosts: bot-metacritic-aws
+  user: ubuntu
+  gather_facts: no
+  vars:
+   token_bot: "{{ lookup('env','token_bot') }}"
+   DATABASE_URL: "{{ lookup('env','DATABASE_URL')}}"
+
+  pre_tasks:
+    - name: Instalar Python
+      become: yes
+      raw: apt-get -y install python-simplejson
+
+  tasks:
+  - name: Actualizar sistema
+    become: yes
+    command: apt-get update
+
+  - name: Instalar essential
+    become: yes
+    command: apt-get install -y build-essential
+
+  - name: Instalar Git
+    become: yes
+    command: apt-get install -y git
+
+  - name: Instalar pip3
+    become: yes
+    command: apt-get install -y python3-pip
+
+  - name: Clonar GitHub
+    become: yes
+    git: repo=https://github.com/josegob/IV-Proyecto  dest=home/ubuntu/IV-Proyecto clone=yes force=yes
+
+  - name: Instalar requirements
+    become: yes
+    command: pip3 install -r home/ubuntu/IV-Proyecto/requirements.txt
+~~~
+
+Una vez que se ejecute el archivo Vagrant nuestro IaaS estará listo para poder acceder mediante ssh con el comando ssh -i KEY.pem ubuntu@DNS
+
+Donde KEY.pem es el fichero necesario para la autenticación.
+
+## Uso de Fabric
+
+Para automatizar el proceso de despliegue vamos a hacer uso de Fabric. Este fichero contendrá una serie de comandos que nos permitirá ejecutar de manera sencilla una serie de comandos.
+
+El contenido de este fichero es el siguiente:
 
 ~~~
