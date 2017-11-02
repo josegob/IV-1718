@@ -27,6 +27,8 @@ Toda la documentación referente a su desarrollo, así como la de las API's que 
 
 [Documentación psycopg2](http://initd.org/psycopg/docs/)
 
+[API BOT](https://bot-metacritic-api.herokuapp.com/check_status)
+
 ## Requisitos
 * pyTelegramBotAPI
 * Libreria requests, BeautifulSoup, re y psycopg2 para la base de datos
