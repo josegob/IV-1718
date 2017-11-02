@@ -27,7 +27,7 @@ Toda la documentación referente a su desarrollo, así como la de las API's que 
 
 [Documentación psycopg2](http://initd.org/psycopg/docs/)
 
-[API BOT](https://bot-metacritic-api.herokuapp.com/check_status)
+Despliegue https://bot-metacritic-api.herokuapp.com/
 
 ## Requisitos
 * pyTelegramBotAPI
