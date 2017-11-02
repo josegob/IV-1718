@@ -1,5 +1,5 @@
 ##
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from bot_metacritic.funciones_bot import *
 import json
 from bot_metacritic.funciones_top20 import *
@@ -30,6 +30,20 @@ class buscarSerie(Resource):
         return buscadorSeries(serie)
 
 api.add_resource(buscarSerie, '/serie/<serie>')
+
+class checkStatus(Resource):
+    def get(self):
+        schema = {
+           "status": "OK",
+           "ejemplo": { "ruta": "/check_status",
+                        "valor": "{JSON: devuelto}"
+                      }
+        }
+
+        return jsonify(schema)
+
+api.add_resource(checkStatus, '/check_status')
+
 
 @app.route('/top20/peliculas')
 def devuelveTop20Peliculas():
