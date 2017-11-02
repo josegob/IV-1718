@@ -9,40 +9,72 @@ from flask_restful import Resource, Api
 app = Flask(__name__)
 api = Api(app)
 
-@app.route("/")
-def welcome():
-    return ("API BOT")
-
 class buscarjuego(Resource):
     def get(self, juego):
-        return buscadorJuegos(juego)
+        juego = buscadorJuegos(juego)
+        schema = {
+            "Nombre": juego[0],
+            "Puntuacion Metacritic": juego[1],
+            "Puntuacion Usuarios": juego[2],
+            "Fecha de lanzamiento": juego[3],
+            "Desarrolladora": juego[4],
+            "Enlace": juego[5]
+        }
+        return jsonify(schema)
 
 api.add_resource(buscarjuego, '/juego/<juego>')
 
 class buscarPelicula(Resource):
     def get(self, pelicula):
-        return buscadorPeliculas(pelicula)
+        pelicula = buscadorPeliculas(pelicula)
+        schema = {
+            "Nombre": pelicula[0],
+            "Puntuacion Metacritic": pelicula[1],
+            "Puntuacion Usuarios": pelicula[2],
+            "Fecha de lanzamiento": pelicula[3],
+            "Productora": pelicula[4],
+            "Enlace": pelicula[5]
+        }
+        return jsonify(schema)
 
 api.add_resource(buscarPelicula, '/pelicula/<pelicula>')
 
 class buscarSerie(Resource):
     def get(self, serie):
-        return buscadorSeries(serie)
+        serie = buscadorSeries(serie)
+        schema = {
+            "Nombre": serie[0],
+            "Puntuacion Metacritic": serie[1],
+            "Puntuacion Usuarios": serie[2],
+            "Fecha de lanzamiento": serie[3],
+            "Productora": serie[4],
+            "Enlace": serie[5]
+        }
+        return jsonify(schema)
 
 api.add_resource(buscarSerie, '/serie/<serie>')
+
+class test_ruta(Resource):
+    def get(self, juego):
+        juego = buscadorJuegos(juego)
+        schema = {"Nombre": juego[0]}
+
+        return jsonify(schema)
+
+api.add_resource(test_ruta, '/test_ruta/<juego>')
 
 class checkStatus(Resource):
     def get(self):
         schema = {
            "status": "OK",
-           "ejemplo": { "ruta": "/check_status",
-                        "valor": "{JSON: devuelto}"
+           "ejemplo": { "ruta": "/test_ruta/cuphead",
+                        "valor": "{Nombre: Cuphead}"
                       }
         }
 
         return jsonify(schema)
 
-api.add_resource(checkStatus, '/check_status')
+api.add_resource(checkStatus, '/')
 
 
 @app.route('/top20/peliculas')
