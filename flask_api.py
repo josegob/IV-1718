@@ -8,6 +8,7 @@ from flask_restful import Resource, Api
 
 app = Flask(__name__)
 api = Api(app)
+app.config['JSON_SORT_KEYS'] = False
 
 class buscarjuego(Resource):
     def get(self, juego):
@@ -65,6 +66,7 @@ api.add_resource(test_ruta, '/test_ruta/<juego>')
 
 class checkStatus(Resource):
     def get(self):
+
         schema = {
            "status": "OK",
            "ejemplo": { "ruta": "/test_ruta/cuphead",
