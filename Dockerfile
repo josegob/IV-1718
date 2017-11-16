@@ -15,3 +15,4 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y git
 RUN git clone https://github.com/josegob/IV-Proyecto.git
 RUN cd IV-Proyecto/ && pip3 install -r requirements.txt
+CMD [ gunicorn IV-Proyecto/flask_api:app]
