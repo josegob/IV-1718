@@ -97,4 +97,4 @@ def devuelveTop20Series():
     return '{} {} {} {}'.format((lista_s[0]), (lista_s[1]), (lista_s[2]), (lista_s[3]))
 
 if __name__ == "__main__":
-    app.run(debug=True, use_reloader=True, host='0.0.0.0', port=80)
+    app.run(debug=True, use_reloader=True)
