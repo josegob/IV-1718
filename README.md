@@ -127,6 +127,8 @@ Una vez descargue nuestro contenedor, nos dará acceso a él y podremos ejecutar
 
 El repositorio de Docker es accesible desde en el siguiente [enlace](https://hub.docker.com/r/josegob/bot-metacritic/)
 
+Contenedor: https://iv-proyecto-fttvcjqigj.now.sh
+
 ## Despliegue en AWS con Vagrant
 
 Para el despliegue en AWS vamos a crear un archivo Vagrant con el siguiente contenido:
