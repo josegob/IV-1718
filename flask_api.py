@@ -74,6 +74,17 @@ class checkStatus(Resource):
 
 api.add_resource(checkStatus, '/')
 
+class checkStatusDocker(Resource):
+    def get(self):
+
+        schema = {
+           "status": "OK"
+        }
+
+        return jsonify(schema)
+
+api.add_resource(checkStatusDocker, '/status')
+
 
 @app.route('/top20/peliculas')
 def devuelveTop20Peliculas():
