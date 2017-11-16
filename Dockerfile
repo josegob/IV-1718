@@ -17,4 +17,5 @@ RUN git clone https://github.com/josegob/IV-Proyecto.git
 RUN cd IV-Proyecto/ && pip3 install -r requirements.txt
 EXPOSE 80
 WORKDIR IV-Proyecto/
+
 CMD ["gunicorn", "--config=config_gunicorn.py", "flask_api:app"]
