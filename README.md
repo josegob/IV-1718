@@ -127,7 +127,7 @@ sudo docker run -e "DATABASE_URL=MI_URL" -e "token_bot=MI_TOKEN" -i -t josegob/b
 ```
 Una vez descargue nuestro contenedor, nos dará acceso a él y podremos ejecutar nuestra aplicación desde Docker
 
-El repositorio de Docker es accesible desde en el siguiente [enlace](https://hub.docker.com/r/josegob/bot-metacritic/)
+El repositorio de Docker es accesible desde en el siguiente [enlace](https://hub.docker.com/r/josegob/iv-proyecto/)
 
 ## Despliegue en AWS con Vagrant
 
