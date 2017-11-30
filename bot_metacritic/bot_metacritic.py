@@ -6,10 +6,14 @@ import time # Librería para hacer que el programa que controla el bot no se aca
 from funciones_bot import *
 import re
 import os
-from funciones_bd import *
+import json
+import requests
 
 
-bot = telebot.TeleBot(os.environ["token_bot"]) # Creamos el objeto de nuestro bot.
+
+
+
+bot = telebot.TeleBot("469787221:AAEXeK_j3K15F8dZoOnmB9al4lQTO8xEo1E") # Creamos el objeto de nuestro bot.
 
 def listener(messages):
     for m in messages:
@@ -24,7 +28,6 @@ bot.set_update_listener(listener)
 
 @bot.message_handler(commands=['buscarjuego'])
 def command_buscarjuego(m):
-    resultado_busqueda = []
     cid = m.chat.id
     juego_busqueda = m.text
     juego_busqueda = re.sub(r'\s+', ' ', juego_busqueda)
@@ -33,24 +36,23 @@ def command_buscarjuego(m):
         bot.send_message(cid, 'Debes especificar el nombre del juego junto al comando')
     else:
         bot.send_message(cid, 'Un momento, voy a buscar el juego')
-        resultado_busqueda = buscadorJuegos(juego_busqueda)
-        if (resultado_busqueda == -1):
+        api_url_base = 'http://127.0.0.1:8000/juego/'
+        api_url_base += juego_busqueda
+        response = requests.get(api_url_base)
+        if (response.status_code != 200):
             bot.send_message(cid, 'Illo lo siento. El juego introducido no se encuentra en la base de datos de Metacritic')
-
-
         else:
-            bot.send_message(cid, 'Nombre del juego: ' + resultado_busqueda[0])
-            bot.send_message(cid, 'Nota Metacritic: ' + resultado_busqueda[1])
-            bot.send_message(cid, 'Nota media usuarios: ' + resultado_busqueda[2])
-            bot.send_message(cid, 'Fecha de lanzamiento: ' + resultado_busqueda[3])
-            bot.send_message(cid, 'Desarrolladora: ' + resultado_busqueda[4])
-            bot.send_message(cid, 'Enlace: ' + resultado_busqueda[5])
-            resultado_busqueda[:] = []
+            data = response.json()
+            bot.send_message(cid, 'Nombre del juego: ' + data["Nombre"])
+            bot.send_message(cid, 'Nota Metacritic: ' + data["Puntuacion Metacritic"])
+            bot.send_message(cid, 'Nota media usuarios: ' + data["Puntuacion Usuarios"])
+            bot.send_message(cid, 'Fecha de lanzamiento: ' + data["Fecha de lanzamiento"])
+            bot.send_message(cid, 'Desarrolladora: ' + data["Desarrolladora"])
+            bot.send_message(cid, 'Enlace: ' + data["Enlace"])
 
 
 @bot.message_handler(commands=['buscarserie'])
 def command_buscarserie(m):
-    resultado_busqueda_serie = []
     cid = m.chat.id
     serie_busqueda = m.text
     serie_busqueda = re.sub(r'\s+', ' ', serie_busqueda)
@@ -59,23 +61,24 @@ def command_buscarserie(m):
         bot.send_message(cid, 'Debes especificar el nombre de la serie junto al comando')
     else:
         bot.send_message(cid, 'Un momento, voy a buscar la serie')
-        resultado_busqueda_serie = buscadorSeries(serie_busqueda)
-        if (resultado_busqueda_serie == -1):
+        api_url_base = 'http://127.0.0.1:8000/serie/'
+        api_url_base += serie_busqueda
+        response = requests.get(api_url_base)
+        if (response.status_code != 200):
             bot.send_message(cid, 'Illo lo siento. La serie introducida no se encuentra en la base de datos de Metacritic')
 
         else:
-            bot.send_message(cid, 'Nombre de la serie: ' + resultado_busqueda_serie[0])
-            bot.send_message(cid, 'Nota Metacritic: ' + resultado_busqueda_serie[1])
-            bot.send_message(cid, 'Nota media usuarios: ' + resultado_busqueda_serie[2])
-            bot.send_message(cid, 'Fecha de lanzamiento: ' + resultado_busqueda_serie[3])
-            bot.send_message(cid, 'Productora: ' + resultado_busqueda_serie[4])
-            bot.send_message(cid, 'Enlace: ' + resultado_busqueda_serie[5])
-            resultado_busqueda_serie[:] = []
+            data = response.json()
+            bot.send_message(cid, 'Nombre de la serie: ' + data["Nombre"])
+            bot.send_message(cid, 'Nota Metacritic: ' + data["Puntuacion Metacritic"])
+            bot.send_message(cid, 'Nota media usuarios: ' + data["Puntuacion Usuarios"])
+            bot.send_message(cid, 'Fecha de lanzamiento: ' + data["Fecha de lanzamiento"])
+            bot.send_message(cid, 'Productora: ' + data["Productora"])
+            bot.send_message(cid, 'Enlace: ' + data["Enlace"])
 
 
 @bot.message_handler(commands=['buscarpelicula'])
 def command_buscarpelicula(m):
-    resultado_busqueda_pelicula = []
     cid = m.chat.id
     pelicula_busqueda = m.text
     pelicula_busqueda = re.sub(r'\s+', ' ', pelicula_busqueda)
@@ -84,53 +87,50 @@ def command_buscarpelicula(m):
         bot.send_message(cid, 'Debes especificar el nombre de la pelicula junto al comando')
     else:
         bot.send_message(cid, 'Un momento, voy a buscar la pelicula')
-        resultado_busqueda_pelicula = buscadorPeliculas(pelicula_busqueda)
-        if (resultado_busqueda_pelicula == -1):
-            bot.send_message(cid, 'Illo lo siento. La serie introducida no se encuentra en la base de datos de Metacritic')
+        api_url_base = 'http://127.0.0.1:8000/pelicula/'
+        api_url_base += pelicula_busqueda
+        response = requests.get(api_url_base)
+        if (response.status_code != 200):
+            bot.send_message(cid, 'Illo lo siento. La pelicula introducida no se encuentra en la base de datos de Metacritic')
 
         else:
-            bot.send_message(cid, 'Nombre de la pelicula: ' + resultado_busqueda_pelicula[0])
-            bot.send_message(cid, 'Nota Metacritic: ' + resultado_busqueda_pelicula[1])
-            bot.send_message(cid, 'Nota media usuarios: ' + resultado_busqueda_pelicula[2])
-            bot.send_message(cid, 'Fecha de lanzamiento: ' + resultado_busqueda_pelicula[3])
-            bot.send_message(cid, 'Productora: ' + resultado_busqueda_pelicula[4])
-            bot.send_message(cid, 'Enlace: ' + resultado_busqueda_pelicula[5])
-            resultado_busqueda_pelicula[:] = []
+            data = response.json()
+            bot.send_message(cid, 'Nombre de la pelicula: ' + data["Nombre"])
+            bot.send_message(cid, 'Nota Metacritic: ' + data["Puntuacion Metacritic"])
+            bot.send_message(cid, 'Nota media usuarios: ' + data["Puntuacion Usuarios"])
+            bot.send_message(cid, 'Fecha de lanzamiento: ' + data["Fecha de lanzamiento"])
+            bot.send_message(cid, 'Productora: ' + data["Productora"])
+            bot.send_message(cid, 'Enlace: ' + data["Enlace"])
 
 
 @bot.message_handler(commands=['top20series'])
 def command_top20series(m):
     cid = m.chat.id
     bot.send_message(cid, 'Un momento, te paso el top20 de las series del momento')
-    resultado_top20series = []
-    resultado_top20series = devuelveTop20()
+    api_url_base = 'http://127.0.0.1:8000/top20/series' #Cambiar por la URL de la API desplegada
+    response = requests.get(api_url_base)
+    data = response.json()
     for i in range(0,20):
-        bot.send_message(cid, '''Numero #{}
-                                \nNombre de la serie: {}
-                                \nPuntuacion de la serie: {}
-                                \nEnlace de la serie: {}
-                                \nFecha de lanamiento: {}'''
-                                .format(i,resultado_top20series[1][i][0],resultado_top20series[1][i][1],
-                                resultado_top20series[1][i][2], resultado_top20series[1][i][3]))
-
-    del resultado_top20series
+        bot.send_message(cid, 'Numero #{}'.format(i))
+        bot.send_message(cid, 'Nombre de la series: ' + data['{}'.format(i)]["Nombre"])
+        bot.send_message(cid, 'Nota Metacritic: ' + data['{}'.format(i)]["Puntuacion Metacritic"])
+        bot.send_message(cid, 'Fecha de lanzamiento: ' + data['{}'.format(i)]["Fecha de lanzamiento"])
+        bot.send_message(cid, 'Enlace: ' + data['{}'.format(i)]["Enlace"])
 
 @bot.message_handler(commands=['top20peliculas'])
 def command_top20peliculas(m):
     cid = m.chat.id
     bot.send_message(cid, 'Un momento, te paso el top20 de las peliculas del momento')
-    resultado_top20peliculas = []
-    resultado_top20peliculas = devuelveTop20()
+    api_url_base = 'http://127.0.0.1:8000/top20/peliculas' #Cambiar por la URL de la API desplegada
+    response = requests.get(api_url_base)
+    data = response.json()
     for i in range(0,20):
-        bot.send_message(cid, '''Numero #{}
-                                \nNombre de la pelicula: {}
-                                \nPuntuacion de la pelicula: {}
-                                \nEnlace de la pelicula: {}
-                                \nFecha de lanamiento: {}'''
-                                .format(i,resultado_top20peliculas[0][i][0],resultado_top20peliculas[0][i][1],
-                                resultado_top20peliculas[0][i][2], resultado_top20peliculas[0][i][3]))
+        bot.send_message(cid, 'Numero #{}'.format(i))
+        bot.send_message(cid, 'Nombre de la pelicula: ' + data['{}'.format(i)]["Nombre"])
+        bot.send_message(cid, 'Nota Metacritic: ' + data['{}'.format(i)]["Puntuacion Metacritic"])
+        bot.send_message(cid, 'Fecha de lanzamiento: ' + data['{}'.format(i)]["Fecha de lanzamiento"])
+        bot.send_message(cid, 'Enlace: ' + data['{}'.format(i)]["Enlace"])
 
-    del resultado_top20peliculas
 
 @bot.message_handler(commands=['help', 'ayuda'])
 def command_help(m):
