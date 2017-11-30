@@ -10,9 +10,6 @@ import json
 import requests
 
 
-
-
-
 bot = telebot.TeleBot(os.environ["token_bot"])  # Creamos el objeto de nuestro bot.
 
 def listener(messages):
