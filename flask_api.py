@@ -11,57 +11,51 @@ api = Api(app)
 
 class buscarjuego(Resource):
     def get(self, juego):
-        juego = buscadorJuegos(juego)
+        resultado = buscadorJuegos(juego)
         schema = {
-            "Nombre": juego[0],
-            "Puntuacion Metacritic": juego[1],
-            "Puntuacion Usuarios": juego[2],
-            "Fecha de lanzamiento": juego[3],
-            "Desarrolladora": juego[4],
-            "Enlace": juego[5]
+            "Nombre": resultado[0],
+            "Puntuacion Metacritic": resultado[1],
+            "Puntuacion Usuarios": resultado[2],
+            "Fecha de lanzamiento": resultado[3],
+            "Desarrolladora": resultado[4],
+            "Enlace": resultado[5]
         }
+        resultado[:] = []
         return jsonify(schema)
 
 api.add_resource(buscarjuego, '/juego/<juego>')
 
 class buscarPelicula(Resource):
     def get(self, pelicula):
-        pelicula = buscadorPeliculas(pelicula)
+        resultado = buscadorPeliculas(pelicula)
         schema = {
-            "Nombre": pelicula[0],
-            "Puntuacion Metacritic": pelicula[1],
-            "Puntuacion Usuarios": pelicula[2],
-            "Fecha de lanzamiento": pelicula[3],
-            "Productora": pelicula[4],
-            "Enlace": pelicula[5]
+            "Nombre": resultado[0],
+            "Puntuacion Metacritic": resultado[1],
+            "Puntuacion Usuarios": resultado[2],
+            "Fecha de lanzamiento": resultado[3],
+            "Productora": resultado[4],
+            "Enlace": resultado[5]
         }
+        resultado[:] = []
         return jsonify(schema)
 
 api.add_resource(buscarPelicula, '/pelicula/<pelicula>')
 
 class buscarSerie(Resource):
     def get(self, serie):
-        serie = buscadorSeries(serie)
+        resultado = buscadorSeries(serie)
         schema = {
-            "Nombre": serie[0],
-            "Puntuacion Metacritic": serie[1],
-            "Puntuacion Usuarios": serie[2],
-            "Fecha de lanzamiento": serie[3],
-            "Productora": serie[4],
-            "Enlace": serie[5]
+            "Nombre": resultado[0],
+            "Puntuacion Metacritic": resultado[1],
+            "Puntuacion Usuarios": resultado[2],
+            "Fecha de lanzamiento": resultado[3],
+            "Productora": resultado[4],
+            "Enlace": resultado[5]
         }
+        resultado[:] = []
         return jsonify(schema)
 
 api.add_resource(buscarSerie, '/serie/<serie>')
-
-class test_ruta(Resource):
-    def get(self, juego):
-        juego = buscadorJuegos(juego)
-        schema = {"Nombre": juego[0]}
-
-        return jsonify(schema)
-
-api.add_resource(test_ruta, '/test_ruta/<juego>')
 
 class checkStatus(Resource):
     def get(self):
@@ -89,12 +83,33 @@ api.add_resource(checkStatusDocker, '/status')
 @app.route('/top20/peliculas')
 def devuelveTop20Peliculas():
     lista_p = top20Peliculas()
-    return '{} {} {} {}'.format((lista_p[0]), (lista_p[1]), (lista_p[2]), (lista_p[3]))
+    total = {}
+    for i in range(0,20):
+        schema = {
+            "Nombre": lista_p[0][i],
+            "Puntuacion Metacritic": lista_p[1][i],
+            "Enlace": lista_p[2][i],
+            "Fecha de lanzamiento": lista_p[3][i]
+        }
+        total[i] = schema
+
+    return jsonify(total)
 
 @app.route('/top20/series')
 def devuelveTop20Series():
     lista_s = top20Series()
-    return '{} {} {} {}'.format((lista_s[0]), (lista_s[1]), (lista_s[2]), (lista_s[3]))
+    total = {}
+    for i in range(0,20):
+        schema = {
+            "Nombre": lista_s[0][i],
+            "Puntuacion Metacritic": lista_s[1][i],
+            "Enlace": lista_s[2][i],
+            "Fecha de lanzamiento": lista_s[3][i]
+        }
+        total[i] = schema
+
+    return jsonify(total)
+
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=True)
