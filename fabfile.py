@@ -1,16 +1,15 @@
 from fabric.api import *
 
 
-def instalar_bot():
+def instalar_proyecto():
 	run('sudo git clone https://github.com/josegob/IV-Proyecto')
 	run('cd ./IV-Proyecto && sudo pip3 install -r requirements.txt')
 
-def bot_up():
-    with shell_env(token_bot='token_bot', DATABASE_URL='DATABASE_URL'):
-        run('nohup sudo -E python3 ./IV-Proyecto/bot_metacritic/bot_metacritic.py', pty=False)
+def api_up():
+    run('nohup sudo -E python3 home/ubuntu/IV-Proyecto/flask_api.py', pty=False)
 
-def delete_bot():
+def delete_api():
 	run('sudo rm -rf ./IV-Proyecto')
 
-def kill_bot():
+def kill_api():
     run('sudo pkill python3')
