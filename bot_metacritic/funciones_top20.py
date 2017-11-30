@@ -6,6 +6,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleW
 
 def top20Peliculas():
 
+    asd = []
     url_peliculas = requests.get("http://www.metacritic.com/browse/movies/score/metascore/90day/filtered", headers=headers)
     #Obtenemos la informacion html de la pagina solicitada. Añadimos el parametro headers
     #para que no nos devuelva un error Forbidden 403.
@@ -49,7 +50,6 @@ def top20Peliculas():
         release_date_peliculas.append(tmp)
 
     return nombre_peliculas, puntuacion_peliculas, info_peliculas, release_date_peliculas
-
 
 def top20Series():
 
