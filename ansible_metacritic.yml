@@ -7,9 +7,9 @@
    DATABASE_URL: "{{ lookup('env','DATABASE_URL')}}"
 
   pre_tasks:
-    - name: Instalar Python
-      become: yes
-      raw: apt-get -y install python-simplejson
+  - name: Instalar Python
+    become: yes
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
   tasks:
   - name: Actualizar sistema
