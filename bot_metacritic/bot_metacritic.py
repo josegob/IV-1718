@@ -13,7 +13,7 @@ import requests
 
 
 
-bot = telebot.TeleBot("469787221:AAEXeK_j3K15F8dZoOnmB9al4lQTO8xEo1E") # Creamos el objeto de nuestro bot.
+bot = telebot.TeleBot(os.environ["token_bot"])  # Creamos el objeto de nuestro bot.
 
 def listener(messages):
     for m in messages:
