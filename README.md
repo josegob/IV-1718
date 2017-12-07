@@ -14,6 +14,8 @@ Despliegue https://bot-metacritic-api.herokuapp.com/
 
 Contenedor: https://iv-proyecto-fttvcjqigj.now.sh
 
+IaaS: http://ec2-34-216-90-243.us-west-2.compute.amazonaws.com
+
 ## Requisitos
 * pyTelegramBotAPI
 * Libreria requests, BeautifulSoup, re y psycopg2 para la base de datos
@@ -253,8 +255,8 @@ Por últimos hemos creado un pequeño script que nos permite automatizar tanto e
 ~~~
 vagrant up --provider=aws
 
-fab -i KEY.pem -H ubuntu@DNS instalar_bot
-fab -i KEY.pem -H ubuntu@DNS bot_up
+fab -i KEY.pem -H ubuntu@DNS instalar_proyecto
+fab -i KEY.pem -H ubuntu@DNS api_up
 
 #Cambiar KEY.pem por el archivo correspondiente de AWS
 #Cambiar DNS por el correspondiente de la instancia creada con Vagrant
