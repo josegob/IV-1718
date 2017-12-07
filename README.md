@@ -171,6 +171,7 @@ Como vemos al final del archivo Vagrant incluimos un archivo Ansible que se va a
 
 ~~~
 ---
+---
 - hosts: bot-metacritic-aws
   user: ubuntu
   gather_facts: no
@@ -179,9 +180,9 @@ Como vemos al final del archivo Vagrant incluimos un archivo Ansible que se va a
    DATABASE_URL: "{{ lookup('env','DATABASE_URL')}}"
 
   pre_tasks:
-    - name: Instalar Python
-      become: yes
-      raw: apt-get -y install python-simplejson
+  - name: Instalar Python
+    become: yes
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
   tasks:
   - name: Actualizar sistema
@@ -207,6 +208,7 @@ Como vemos al final del archivo Vagrant incluimos un archivo Ansible que se va a
   - name: Instalar requirements
     become: yes
     command: pip3 install -r home/ubuntu/IV-Proyecto/requirements.txt
+
 ~~~
 
 Una vez que se ejecute el archivo Vagrant nuestro IaaS estará listo para poder acceder mediante ssh con el comando ssh -i KEY.pem ubuntu@DNS
@@ -223,19 +225,19 @@ El contenido de este fichero es el siguiente:
 from fabric.api import *
 
 
-def instalar_bot():
+def instalar_proyecto():
 	run('sudo git clone https://github.com/josegob/IV-Proyecto')
 	run('cd ./IV-Proyecto && sudo pip3 install -r requirements.txt')
 
-def bot_up():
-    with shell_env(token_bot='token_bot', DATABASE_URL='DATABASE_URL'):
-        run('nohup sudo -E python3 ./IV-Proyecto/bot_metacritic/bot_metacritic.py', pty=False)
+def api_up():
+    run('nohup sudo -E python3 home/ubuntu/IV-Proyecto/flask_api.py', pty=False)
 
-def delete_bot():
+def delete_api():
 	run('sudo rm -rf ./IV-Proyecto')
 
-def kill_bot():
+def kill_api():
     run('sudo pkill python3')
+
 ~~~
 
 Para ejecutar estas funciones haremos uso de los siguientes comandos:
