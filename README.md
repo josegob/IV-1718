@@ -14,7 +14,7 @@ Despliegue https://bot-metacritic-api.herokuapp.com/
 
 Contenedor: https://iv-proyecto-fttvcjqigj.now.sh
 
-IaaS: http://ec2-34-216-90-243.us-west-2.compute.amazonaws.com
+Despliegue final: http://ec2-34-216-90-243.us-west-2.compute.amazonaws.com
 
 ## Requisitos
 * pyTelegramBotAPI
